@@ -25,4 +25,4 @@ row_multiFamily_temp = row_multiFamily.drop(['floor'], axis = 1)
 real_estate = pd.concat([apartment_temp, officetel_temp, detatched_multiFamily_temp, row_multiFamily_temp
                          ], ignore_index = True)
 
-real_estate.to_csv("/home/devuk/code/machine_learning/data/real_estate.csv", header = None)
+real_estate.to_csv("/home/devuk/code/machine_learning/data/real_estate.csv")
