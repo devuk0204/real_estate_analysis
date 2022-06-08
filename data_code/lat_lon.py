@@ -2,7 +2,8 @@ import requests
 import json
 import pandas as pd
 
-cvs_all = pd.read_csv("/home/devuk/code/machine_learning/data/cvs_location_final.csv")
+#cvs_all = pd.read_csv("/home/devuk/code/machine_learning/data/cvs_location_final.csv")
+
 
 
 def get_location(address):
@@ -17,6 +18,15 @@ def get_location(address):
         coordinate = [str(address['y']), str(address['x'])]
     return coordinate
 
+"""
+j = 1
+for i in range(len(cvs_all)) :
+    coordinate = get_location(cvs_all.address[i])
+    cvs_all.latitude[i] = coordinate[0]
+    cvs_all.longitude[i] = coordinate[1]
+    print(j, cvs_all.latitude[i], cvs_all.longitude[i])
+    j += 1
+"""
 
 j = 1
 for i in range(len(cvs_all)) :
