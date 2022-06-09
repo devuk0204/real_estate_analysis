@@ -37,7 +37,7 @@ duplication_coordinate = 'temp'
 
 
 j = 1
-for i in range(67467, len(real_estate)) :
+for i in range(len(real_estate)) :
     if real_estate.address2[i] != real_estate.address2[i] :
         if real_estate.address3[i] != real_estate.address3[i] :
             address = ''
