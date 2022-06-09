@@ -3,8 +3,8 @@ import json
 import pandas as pd
 
 #cvs_all = pd.read_csv("/home/devuk/code/machine_learning/data/cvs_location_final.csv")
-real_estate = pd.read_csv("/home/devuk/code/machine_learning/data/real_estate.csv")
-
+#real_estate = pd.read_csv("/home/devuk/code/machine_learning/data/real_estate.csv")
+subway = pd.read_csv("/home/devuk/code/machine_learning/data/subway.csv")
 
 def get_location(address):
     url = 'https://dapi.kakao.com/v2/local/search/address.json?query=' + address
@@ -21,6 +21,14 @@ def get_location(address):
             coordinate = [str(address['y']), str(address['x'])]        
     return coordinate
 
+for i in range(len(subway)) :
+    coordinate = get_location(subway.address1[i])
+    subway.latitude[i] = coordinate[0]
+    subway.longitude[i] = coordinate[1]
+    print(subway.latitude[i], subway.longitude[i])
+    
+subway.to_csv("/home/devuk/code/machine_learning/data/subway.csv", index = False)
+
 """
 j = 1
 for i in range(len(cvs_all)) :
@@ -31,7 +39,7 @@ for i in range(len(cvs_all)) :
     j += 1
 
 cvs_all.to_csv("/home/devuk/code/machine_learning/data/cvs_location_final.csv")
-"""
+
 duplication_address = 'temp'
 duplication_coordinate = 'temp'
 
@@ -53,7 +61,7 @@ for i in range(len(real_estate)) :
                 duplication_coordinate = coordinate
                 print('not duplication address')
         
-        
+
             
     else :
         address = real_estate.address1[i]+real_estate.address2[i]
@@ -73,3 +81,4 @@ for i in range(len(real_estate)) :
     j += 1
     
 real_estate.to_csv("/home/devuk/code/machine_learning/data/real_estate.csv")
+"""
